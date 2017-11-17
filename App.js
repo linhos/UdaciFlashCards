@@ -3,14 +3,15 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStore } from 'redux';
 import {Provider} from 'react-redux';
 
-import reducer from './reducers';
-import {BaseComponent} from './components/BaseComponent'
+import configureStore from './store/configureStore';
+import BaseComponent from './components/BaseComponent/'
 
+const store = configureStore();
 
 export default class App extends React.Component {
   render() {
     return (
-      <Provider store={createStore(reducer)}>
+      <Provider store={store}>
         <BaseComponent />
       </Provider>
     );

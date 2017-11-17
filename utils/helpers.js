@@ -1,9 +1,8 @@
 import {AsyncStorage} from 'react-native'
 
-
 const FLASHCARD_STORAGE_KEY = 'UdaciFlashCard:card'
 
-let data = {
+export const data = {
     GameOfTrones: {
         title: 'Game of Thrones',
         questions:[
@@ -31,6 +30,14 @@ let data = {
         ] 
     }
 }
+
+
+export function fetchDecks() {
+    return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY).then(results => {
+        return JSON.parse(results)
+    });
+}
+    
 
 export function getDeck(title) {
     return fetchDesk()

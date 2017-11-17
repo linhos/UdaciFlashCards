@@ -1,6 +1,17 @@
 import { DECK_LIST } from '../actions'
 
-function desks (state={}, action) {
+import {data} from '../utils/helpers'
+
+const initialState = {
+    'gameOfThrones': [{
+        'answer': 1,
+        'question': 'shared'
+    }],
+    'naruto': [],
+}
+
+
+function decks (state=initialState, action) {
     switch (action.type) {
         case DECK_LIST:
             return {
@@ -12,4 +23,4 @@ function desks (state={}, action) {
     }
 }
 
-export default desks
+export default decks

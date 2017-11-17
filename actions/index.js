@@ -1,10 +1,22 @@
-export const DECK_LIST = 'DECK_LIST'
+
+import * as types from './types.js';
+import { AsyncStorage } from 'react-native';
 
 
-export function deckList (decks) {
+export function deckListAction (decks) {
     return {
-        type: DESK_LIST,
+        type: types.DECK_LIST,
         decks
     }
 }
 
+
+export function fetchDecks() {
+    return (dispatch) => {
+        AsyncStorage.getItem(FLASHCARD_STORAGE_KEY)
+        .then((results) => {
+            console.log('desk Data', results)
+            dispatch(deckListAction(results))
+        })
+    }
+}

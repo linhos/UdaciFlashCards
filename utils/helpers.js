@@ -32,16 +32,7 @@ let data = {
     }
 }
 
-export function fetchDesk(){
-    return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY)
-        .then((results) => {
-            console.log('desk Data', results)
-            return JSON.parse(results)
-
-        })
-}
-
-export function getDesk(title) {
+export function getDeck(title) {
     return fetchDesk()
         .then(desks => desks[title])
 }

@@ -1,26 +1,34 @@
+
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {SectionList, FlatList} from 'react-native'
 import {fetchDeckstAction} from '../../actions'
 import {Text, View, StyleSheet} from 'react-native'
-import {fetchDecks} from '../../utils/helpers'
+import {fetchDecks, setInitialData} from '../../utils/helpers'
 
 
 class BaseComponent extends Component
 {
+    state = {
+        decks: []
+      };
 
     componentDidMount() {
-        fetchDecks().then((decks) => {
-            this.props.dispatch(fetchDeckstAction(decks))
-        })
+        
+        fetchDecks().then(results => {
+            this.setState({
+                decks: results
+            });
+        });
     }
 
     render() {
+        console.log(this.state)
         return (
             <View style={styles.container}>
             <FlatList
-              data={this.props.decks}
-              renderItem={({item}) => <Text style={styles.item}>{item.key}</Text>}
+              data={this.state.decks}
+              renderItem={({item}) => <Text style={styles.item}>{item.decks}</Text>}
             />
           </View>
         )
@@ -40,10 +48,10 @@ const styles = StyleSheet.create({
     },
   })
 
-const mapStateToProps = state => {
+function mapStateToProps(state) {
     return {
         decks: state,
-    }
+    };
 }
 
 export default connect(mapStateToProps)(BaseComponent)

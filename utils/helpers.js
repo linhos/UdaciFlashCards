@@ -2,35 +2,16 @@ import {AsyncStorage} from 'react-native'
 
 const FLASHCARD_STORAGE_KEY = 'UdaciFlashCard:card'
 
-export const data = {
-    React: {
-      title: 'React',
-      questions: [
-        {
-          question: 'What is React?',
-          answer: 'A library for managing user interfaces'
-        },
-        {
-          question: 'Where do you make Ajax requests in React?',
-          answer: 'The componentDidMount lifecycle event'
-        }
-      ]
-    },
-    JavaScript: {
-      title: 'JavaScript',
-      questions: [
-        {
-          question: 'What is a closure?',
-          answer: 'The combination of a function and the lexical environment within which that function was declared.'
-        }
-      ]
-    }
+let decks = {
+
 }
+
+const data=[{key: 'a'}, {key: 'b'}]
+
 
 
 export function fetchDecks() {
     return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY).then(results => {
-        console.log(results)
         return results === null ? setInitialData() : JSON.parse(results)
     });
 }
@@ -38,6 +19,7 @@ export function fetchDecks() {
 
 export function setInitialData() {
     AsyncStorage.setItem(FLASHCARD_STORAGE_KEY, JSON.stringify(data));
+    console.log(data)
     return data;
 }
     

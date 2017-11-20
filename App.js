@@ -24,9 +24,15 @@ const DetailDeck = ({navigation}) => (
 const FlashCardNavigation = StackNavigator({
   Home: {
       screen: Home,
+      navigationOptions: {
+        title: 'Home'
+      }
   },
   DetailDeck: {
       screen: DetailDeck,
+      navigationOptions: {
+        title: 'Deck Detail'
+      }
   }
 })
 

@@ -1,41 +1,57 @@
 import { combineReducers } from 'redux'
-import { DECK_LIST } from '../actions'
 
-const initialState = [
-  {
-    title: 'React',
-    number: 2,
-    questions: [
+
+const initialState = {
+  'decks': [
       {
-        question: 'What is React?',
-        answer: 'A library for managing user interfaces'
-      },
-      {
-        question: 'Where do you make Ajax requests in React?',
-        answer: 'The componentDidMount lifecycle event'
-      }
-    ]
-  },
-  {
-    title: 'JavaScript',
-    number: 2,
-    questions: [
-      {
-        question: 'What is a closure?',
-        answer: 'The combination of a function and the lexical environment within which that function was declared.'
-      }
-    ]
-  }
-]
+      deck_id: 1,
+      title: 'React',
+      number: 2,
+      icon: 'av-timer',
+      questions: [
+        {
+          question: 'What is React?',
+          answer: 'A library for managing user interfaces'
+        },
+        {
+          question: 'Where do you make Ajax requests in React?',
+          answer: 'The componentDidMount lifecycle event'
+        }
+      ]
+    },
+    {
+      deck_id: 2,
+      title: 'JavaScript',
+      number: 1,
+      icon: 'av-timer',
+      questions: [
+        {
+          question: 'What is a closure?',
+          answer: 'The combination of a function and the lexical environment within which that function was declared.'
+        }
+      ]
+    }
+  ],
+  'deck': []
+}
+
 
 
 function decksReducer (state=initialState, action) {
+
     switch (action.type) {
-        case DECK_LIST:
+        case 'DECK_LIST':
+        console.log("DECK LIST REDUCER")
             return {
                 ...state,
                 ...action.decks
             }
+        case 'DECK_ITEM':
+          console.log("DECK ITEM REDUCER")
+          return Object.assign({}, state, {
+            'deck': action.deck,
+            
+          }) 
         default:
             return state;
     }

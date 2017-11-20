@@ -1,12 +1,15 @@
 
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {SectionList, FlatList, ListView, TouchableHighlight} from 'react-native'
+import {SectionList, FlatList, ListView, TouchableHighlight, TouchableOpacity} from 'react-native'
 import {fetchDecksAction} from '../../actions'
 import {Text, View, StyleSheet} from 'react-native'
 import {fetchDecks} from '../../utils/helpers'
 import ListItemComponent from '../ListItemComponent'
 import FlashCardNavigation from '../NavigationComponent'
+
+import { List, ListItem } from 'react-native-elements'
+
 
 
 class BaseComponent extends Component
@@ -22,16 +25,18 @@ class BaseComponent extends Component
     _renderItem = ({item}) => {
 
         return (
-            <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('DeckIndividual', item)}
-                underlayColor='#eeeeee'>
-                <View>
-                        <Text>
-                            {item.title}
-                        </Text>
-                        <Text>Questions: {item.number}</Text>    
-                </View>
-            </TouchableHighlight>
+            <View>
+                <TouchableOpacity
+                onPress={() => this.props.navigation.navigate('DetailDeck', item)}
+                    underlayColor='#eeeeee'>
+                    
+                            <Text>
+                                {item.title}
+                            </Text>
+                            <Text>Questions: {item.number}</Text>    
+                    
+                </TouchableOpacity>
+            </View>
         )
     }
 
@@ -54,16 +59,15 @@ class BaseComponent extends Component
 
 
     render() {
-        console.log(this.props.state.decks)
-
+        console.log(this.props.state.decks.decks)
         return (
 
             <View style={styles.container}>
-                { this.props.state.decks 
+                { this.props.state.decks.decks
                     ?
                     
                         <FlatList
-                            data={this.props.state.decks}
+                            data={this.props.state.decks.decks}
                             renderItem={this._renderItem}
                             ItemSeparatorComponent={this._renderSeparator}
                             keyExtractor={this._keyExtractor}
@@ -72,6 +76,17 @@ class BaseComponent extends Component
                     :
                         <Text>No existen tarjetas !!</Text>
                 }
+                <List>
+                    {
+                        this.props.state.decks.decks.map((item, i) => (
+                        <ListItem
+                            key={i}
+                            title={item.title}
+                            leftIcon={{name: item.icon}}
+                        />
+                        ))
+                    }
+                </List>
             </View>
         )
     }

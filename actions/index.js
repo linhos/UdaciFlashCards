@@ -10,3 +10,10 @@ export function fetchDecksAction (decks) {
     }
     
 }
+
+export function getDeckAction(deck) {
+    return {
+        type: types.DECK_ITEM,
+        deck
+    }
+}

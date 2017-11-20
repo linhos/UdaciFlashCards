@@ -3,7 +3,7 @@ import { DECK_LIST } from '../actions'
 
 const initialState = [
   {
-    key: 'React',
+    title: 'React',
     number: 2,
     questions: [
       {
@@ -17,7 +17,7 @@ const initialState = [
     ]
   },
   {
-    key: 'JavaScript',
+    title: 'JavaScript',
     number: 2,
     questions: [
       {

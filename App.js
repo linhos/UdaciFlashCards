@@ -5,14 +5,38 @@ import {Provider} from 'react-redux';
 
 import configureStore from './store/configureStore';
 import BaseComponent from './components/BaseComponent/'
+import DeckComponent from './components/DeckComponent'
+
+import {StackNavigator} from 'react-navigation';
 
 const store = configureStore();
+
+
+const Home = ({navigation}) => (
+      <BaseComponent navigation={navigation} />
+)
+
+const DetailDeck = ({navigation}) => (
+  <DeckComponent navigation={navigation} />
+)
+
+
+const FlashCardNavigation = StackNavigator({
+  Home: {
+      screen: Home,
+  },
+  DetailDeck: {
+      screen: DetailDeck,
+  }
+})
 
 export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <BaseComponent />
+
+          <FlashCardNavigation />
+  
       </Provider>
     );
   }

@@ -24,9 +24,10 @@ class AddQuestionToDeckComponent extends Component {
 
         addCardToDeckHelper('React', card)
 
-        addCardAction('React', card)
+        this.props.dispatch(addCardAction('React', card))
 
-        this.props.navigation.goBack();
+        //this.props.navigation.goBack();
+        console.log(this.props.state)
 
     }
 
@@ -57,4 +58,8 @@ class AddQuestionToDeckComponent extends Component {
 
 }
 
-export default connect()(AddQuestionToDeckComponent)
+const mapStateToProps = state => {
+    return {state}
+}
+
+export default connect(mapStateToProps)(AddQuestionToDeckComponent)

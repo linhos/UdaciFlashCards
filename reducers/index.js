@@ -58,11 +58,10 @@ function decksReducer (state=initialState, action) {
           })
 
         case 'ADD_CARD':
-          let deck = Object.assign({}, state);
-          console.log(deck)
-          let deckItem = deck.find(b => b.title === action.title);
-          deckItem.push(action.card)
-          return deck
+          let deckState = Object.assign({}, state);
+          let deckItem = deckState.decks.find(b => b.title === action.title);
+          deckItem.questions.push(action.card)
+          return deckState
         
         default:
             return state;

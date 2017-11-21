@@ -59,29 +59,17 @@ class BaseComponent extends Component
 
 
     render() {
-        console.log(this.props.state.decks.decks)
         return (
-
-            <View style={styles.container}>
-                { this.props.state.decks.decks
-                    ?
-                    
-                        <FlatList
-                            data={this.props.state.decks.decks}
-                            renderItem={this._renderItem}
-                            ItemSeparatorComponent={this._renderSeparator}
-                            keyExtractor={this._keyExtractor}
-                        />
-
-                    :
-                        <Text>No existen tarjetas !!</Text>
-                }
+            <View>
                 <List>
                     {
                         this.props.state.decks.decks.map((item, i) => (
+                        
                         <ListItem
+                            onPress={() => this.props.navigation.navigate('DetailDeck', item)}
                             key={i}
                             title={item.title}
+                            subtitle={`Questions: ${item.number}`}
                             leftIcon={{name: item.icon}}
                         />
                         ))

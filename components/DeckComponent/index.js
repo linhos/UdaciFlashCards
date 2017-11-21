@@ -20,6 +20,7 @@ class DeckComponent extends Component {
             
             <View>
             <Button
+              buttonStyle={{marginBottom: 10}}
               icon={{name: 'add-circle'}}
               title='Add Card to Deck'
               onPress={() => {
@@ -29,9 +30,10 @@ class DeckComponent extends Component {
                 }
               }
             />
-            <Divider style={{ backgroundColor: 'blue' }} />
+            <Divider style={{ backgroundColor: '#ccc' }} />
             <Button
-              icon={{name: 'add-circle'}}
+              buttonStyle={{marginBottom: 10}}
+              icon={{name: 'question-circle'}}
               title='Start Quiz'
               onPress={() => {
                   this.props.navigation.navigate(

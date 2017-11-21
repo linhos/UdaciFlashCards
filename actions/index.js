@@ -17,3 +17,12 @@ export function getDeckAction(deck) {
         deck
     }
 }
+
+
+export function addCardAction(title, card) {
+    return {
+        type: types.ADD_CARD,
+        title,
+        card
+    }
+}

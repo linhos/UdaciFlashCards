@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {View, Text, TextInput} from 'react-native'
 import { Button } from 'react-native-elements'
 import {addCardToDeckHelper} from '../../utils/helpers'
+import {addCardAction} from '../../actions'
+
 
 class AddQuestionToDeckComponent extends Component {
 
@@ -21,6 +23,8 @@ class AddQuestionToDeckComponent extends Component {
         }
 
         addCardToDeckHelper('React', card)
+
+        addCardAction('React', card)
 
         this.props.navigation.goBack();
 

@@ -16,6 +16,10 @@ const initialState = {
         {
           question: 'Where do you make Ajax requests in React?',
           answer: 'The componentDidMount lifecycle event'
+        },
+        {
+          question: 'Where do you make Ajax requests in React?',
+          answer: 'The componentDidMount lifecycle event'
         }
       ]
     },
@@ -41,7 +45,7 @@ function decksReducer (state=initialState, action) {
 
     switch (action.type) {
         case 'DECK_LIST':
-        console.log("DECK LIST REDUCER")
+            console.log("DECK LIST REDUCER")
             return {
                 ...state,
                 ...action.decks
@@ -51,7 +55,15 @@ function decksReducer (state=initialState, action) {
           return Object.assign({}, state, {
             'deck': action.deck,
             
-          }) 
+          })
+
+        case 'ADD_CARD':
+          let deck = Object.assign({}, state);
+          console.log(deck)
+          let deckItem = deck.find(b => b.title === action.title);
+          deckItem.push(action.card)
+          return deck
+        
         default:
             return state;
     }

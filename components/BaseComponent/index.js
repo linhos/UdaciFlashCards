@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {SectionList, FlatList, ListView, TouchableHighlight, TouchableOpacity} from 'react-native'
 import {fetchDecksAction} from '../../actions'
 import {Text, View, StyleSheet} from 'react-native'
-import {fetchDecks} from '../../utils/helpers'
+import {fetchDecks, setInitialData, getDecks} from '../../utils/helpers'
 import ListItemComponent from '../ListItemComponent'
 import FlashCardNavigation from '../NavigationComponent'
 
@@ -15,11 +15,6 @@ import { List, ListItem } from 'react-native-elements'
 class BaseComponent extends Component
 {
     componentDidMount() {
-     
-        fetchDecks().then(
-            (decks) => {
-                this.props.dispatch(fetchDecksAction(decks))
-            });
     }
 
     _renderItem = ({item}) => {
@@ -33,7 +28,7 @@ class BaseComponent extends Component
                             <Text>
                                 {item.title}
                             </Text>
-                            <Text>Questions: {item.number}</Text>    
+                            <Text>Questions: {Object.keys(item.questions).length}</Text>    
                     
                 </TouchableOpacity>
             </View>
@@ -59,6 +54,7 @@ class BaseComponent extends Component
 
 
     render() {
+        console.log(this.props.state.decks.decks)
         return (
             <View>
                 <List>
@@ -69,7 +65,7 @@ class BaseComponent extends Component
                             onPress={() => this.props.navigation.navigate('DetailDeck', item)}
                             key={i}
                             title={item.title}
-                            subtitle={`Questions: ${item.number}`}
+                            subtitle={Object.keys(item.questions).length}
                             leftIcon={{name: item.icon}}
                         />
                         ))

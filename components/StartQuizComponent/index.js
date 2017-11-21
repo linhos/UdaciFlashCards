@@ -9,7 +9,7 @@ class StartQuizComponent extends Component {
         return (
             <View>
                 <Text>
-                StartQuizComponent
+                    Quiz
                 </Text>
             </View>
         )

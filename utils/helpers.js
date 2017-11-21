@@ -17,12 +17,28 @@ const data = {
           {
             question: 'Where do you make Ajax requests in React?',
             answer: 'The componentDidMount lifecycle event'
+          },
+          {
+            question: 'Where do you make Ajax requests in React?',
+            answer: 'The componentDidMount lifecycle event'
           }
         ]
       },
       {
         deck_id: 2,
         title: 'JavaScript',
+        number: 1,
+        icon: 'av-timer',
+        questions: [
+          {
+            question: 'What is a closure?',
+            answer: 'The combination of a function and the lexical environment within which that function was declared.'
+          }
+        ]
+      },
+      {
+        deck_id: 3,
+        title: 'Python',
         number: 1,
         icon: 'av-timer',
         questions: [
@@ -45,7 +61,6 @@ export function fetchDecks() {
 
 export function setInitialData() {
     AsyncStorage.setItem(FLASHCARD_STORAGE_KEY, JSON.stringify(data));
-    console.log(data)
     return data;
 }
     

@@ -25,7 +25,7 @@ class DeckComponent extends Component {
               title='Add Card to Deck'
               onPress={() => {
                   this.props.navigation.navigate(
-                    'AddQuestionToDeck',
+                    'AddQuestionToDeck', this.props.state.decks.deck.title
                   );
                 }
               }

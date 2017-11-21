@@ -22,12 +22,11 @@ class AddQuestionToDeckComponent extends Component {
             answer
         }
 
-        addCardToDeckHelper('React', card)
+        addCardToDeckHelper(this.props.navigation.state.params, card)
 
-        this.props.dispatch(addCardAction('React', card))
+        this.props.dispatch(addCardAction(this.props.navigation.state.params, card))
 
-        //this.props.navigation.goBack();
-        console.log(this.props.state)
+        this.props.navigation.goBack();
 
     }
 

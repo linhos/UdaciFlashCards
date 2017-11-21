@@ -8,32 +8,36 @@ class StartQuizComponent extends Component {
     constructor(props){
         super(props)
         this.state={
+            deck: [],
             question: [],
             totalQuestions: 0,
             questionNumber:1,
+            questionIndex: 0,
             TotalCorrect: 0,
             totalInvalid: 0,
-            showAnswer: false
+            showAnswer: false,
+            complete: false
         }
     }
 
     componentDidMount() {
       
 
-        let deck = this.props.state.decks.decks.find(b => b.deck_id == this.props.navigation.state.params)
+        deck = this.props.state.decks.decks.find(b => b.deck_id == this.props.navigation.state.params)
 
         this.setState(state => ({
-            totalQuestions: deck.questions.length
+            totalQuestions: deck.questions.length,
+            deck: deck
         }))
 
         if (this.state.questionNumber === 1) {
             
             this.setState(state => ({
-                question: deck.questions[0],
+                question: deck.questions[this.state.questionIndex],
                 questionNumber: 1
             }))
         }
-            
+         
     }
 
     showAnswer = () => {
@@ -54,10 +58,20 @@ class StartQuizComponent extends Component {
         })
     }
 
+    nextQuestion = () => {
+        
+        this.setState(state => ({
+            questionNumber: this.state.questionNumber + 1,
+            questionIndex: this.state.questionIndex + 1,
+            question: this.state.deck.questions[this.state.questionIndex + 1],
+            showAnswer: false
+        }))
+        
+    }
 
 
-
-    render () {
+    renderQuiz() {
+        if (this.state.questionIndex < this.state.totalQuestions) {
         return (
             <View>
                 <Card title="">
@@ -69,7 +83,7 @@ class StartQuizComponent extends Component {
                     </Text>
                     { this.state.showAnswer && 
                         <View>
-                            <Text style={{marginBottom: 10, textAlign: 'center', fontColor: 'green'}}>
+                            <Text style={{marginBottom: 10, textAlign: 'center'}}>
                                 {this.state.question.answer}
                             </Text>
                         </View>
@@ -104,8 +118,65 @@ class StartQuizComponent extends Component {
                                 title='show the answer' />
                         </View>
                     }
+                        <View>
+                            <Button
+                                buttonStyle={{marginTop: 10, marginBottom: 10}}
+                                onPress={this.nextQuestion}
+                                large
+                                icon={{name: 'envira', type: 'font-awesome'}}
+                                title='Next question' />
+                        </View>
                 </Card>
             </View>
+            )
+        }
+        return (
+            <View>
+                <Card title="">
+                    <Text style={{marginBottom: 10, textAlign: 'center', fontWeight: 'bold'}}>
+                        Good Job: {this.state.TotalCorrect} answers correctly !!
+                    </Text>
+                    <View>
+                    <Button
+                        buttonStyle={{marginBottom: 10, backgroundColor: 'green'}}
+                        icon={{name: 'add-circle'}}
+                        title='Restart Quiz'
+                        onPress={() => {
+                            this.props.navigation.navigate(
+                                'StartQuiz', this.props.navigation.state.params
+                            );
+                            }
+                        }
+                        />
+                        <Button
+                        buttonStyle={{marginBottom: 10, backgroundColor: 'grey'}}
+                        icon={{name: 'add-circle'}}
+                        title='Back to Deck'
+                        onPress={() => {
+                            this.props.navigation.navigate(
+                                'DetailDeck', this.state.deck
+                            );
+                            }
+                        }
+                        />
+                    </View>
+                </Card>
+            </View>
+        )
+    }
+
+
+
+    render () {
+        return (
+            <View
+                style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignContent: 'center'
+                }}>
+            {this.renderQuiz()}
+          </View>
         )
     }
 

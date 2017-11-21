@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {View, Text} from 'react-native'
-import {Card} from 'react-native-elements'
+import {Card, Button} from 'react-native-elements'
 
 class StartQuizComponent extends Component {
 
@@ -10,6 +10,7 @@ class StartQuizComponent extends Component {
         this.state={
             question: [],
             questionNumber:1,
+            showAnswer: false
         }
     }
 
@@ -26,6 +27,12 @@ class StartQuizComponent extends Component {
             
     }
 
+    showAnswer = () => {
+        this.setState({
+            showAnswer: true
+        })
+    }
+
 
     render () {
         return (
@@ -34,6 +41,20 @@ class StartQuizComponent extends Component {
                     <Text style={{marginBottom: 10, textAlign: 'center', fontWeight: 'bold'}}>
                         {this.state.question.question}
                     </Text>
+                    { this.state.showAnswer && 
+                        <View>
+                             <Text style={{marginBottom: 10, textAlign: 'center', fontColor: 'green'}}>
+                            {this.state.question.answer}
+                    </Text>
+                        </View>
+                    }
+                    <View>
+                        <Button
+                            onPress={this.showAnswer}
+                            raised
+                            icon={{name: 'cached'}}
+                            title='show the answer' />
+                    </View>
                 </Card>
             </View>
         )

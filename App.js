@@ -8,6 +8,7 @@ import BaseComponent from './components/BaseComponent/'
 import DeckComponent from './components/DeckComponent'
 import AddQuestionToDeckComponent from './components/AddQuestionToDeckComponent'
 import StartQuizComponent from './components/StartQuizComponent'
+import NewDeckComponent from './components/NewDeckComponent'
 
 
 import {StackNavigator} from 'react-navigation';
@@ -29,6 +30,10 @@ const AddQuestionToDeck = ({navigation}) => (
 
 const StartQuiz = ({navigation}) => (
   <StartQuizComponent navigation={navigation} />
+)
+
+const NewDeck = ({navigation}) => (
+  <NewDeckComponent navigation={navigation} />
 )
 
 

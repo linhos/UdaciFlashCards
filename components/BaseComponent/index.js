@@ -7,7 +7,7 @@ import {Text, View, StyleSheet} from 'react-native'
 import {fetchDecks, setInitialData, getDecks} from '../../utils/helpers'
 import ListItemComponent from '../ListItemComponent'
 import FlashCardNavigation from '../NavigationComponent'
-
+import {Card, Button} from 'react-native-elements'
 import { List, ListItem } from 'react-native-elements'
 
 
@@ -54,7 +54,7 @@ class BaseComponent extends Component
 
 
     render() {
-        console.log(this.props.state.decks.decks)
+
         return (
             <View>
                 <List>
@@ -71,7 +71,22 @@ class BaseComponent extends Component
                         ))
                     }
                 </List>
+                <Button
+                    buttonStyle={{marginTop: 20, marginBottom: 10, backgroundColor: 'green'}}
+                    icon={{name: 'add-circle'}}
+                    title='New Deck'
+                    onPress={() => {
+                        this.props.navigation.navigate(
+                            'NewDeck',
+                        );
+                        }
+                    }
+                />
+
             </View>
+
+
+
         )
     }
 

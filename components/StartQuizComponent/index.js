@@ -10,6 +10,8 @@ class StartQuizComponent extends Component {
         this.state={
             question: [],
             questionNumber:1,
+            TotalCorrect: 0,
+            totalInvalid: 0,
             showAnswer: false
         }
     }
@@ -33,6 +35,20 @@ class StartQuizComponent extends Component {
         })
     }
 
+    isCorrect = () => {
+        this.setState({
+            TotalCorrect: this.state.TotalCorrect + 1
+        })
+    }
+
+    isInvalid = () => {
+        this.setState({
+            totalInvalid: this.state.totalInvalid + 1
+        })
+    }
+
+
+
 
     render () {
         return (
@@ -48,13 +64,36 @@ class StartQuizComponent extends Component {
                     </Text>
                         </View>
                     }
-                    <View>
-                        <Button
-                            onPress={this.showAnswer}
-                            raised
-                            icon={{name: 'cached'}}
-                            title='show the answer' />
-                    </View>
+                    { this.state.showAnswer && 
+                        <View>
+                            <View>
+                                <Button
+                                    buttonStyle={{marginBottom: 10}}
+                                    onPress={this.isCorrect}
+                                    backgroundColor= 'green'
+                                    raised
+                                    icon={{name: 'code'}}
+                                    title='Corrent' />
+                                
+                                <Button
+                                    buttonStyle={{marginBottom: 10}}
+                                    onPress={this.isInvalid}
+                                    backgroundColor='red'
+                                    raised
+                                    icon={{name: 'code'}}
+                                    title='Invalid' />
+                            </View>
+                        </View>
+                    }
+                    { !this.state.showAnswer && 
+                        <View>
+                            <Button
+                                onPress={this.showAnswer}
+                                raised
+                                icon={{name: 'cached'}}
+                                title='show the answer' />
+                        </View>
+                    }
                 </Card>
             </View>
         )

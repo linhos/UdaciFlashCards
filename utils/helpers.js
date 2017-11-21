@@ -2,13 +2,39 @@ import {AsyncStorage} from 'react-native'
 
 const FLASHCARD_STORAGE_KEY = 'UdaciFlashCard:card'
 
-let decks = {
-
+const data = {
+    'decks': [
+        {
+        deck_id: 1,
+        title: 'React',
+        number: 2,
+        icon: 'av-timer',
+        questions: [
+          {
+            question: 'What is React?',
+            answer: 'A library for managing user interfaces'
+          },
+          {
+            question: 'Where do you make Ajax requests in React?',
+            answer: 'The componentDidMount lifecycle event'
+          }
+        ]
+      },
+      {
+        deck_id: 2,
+        title: 'JavaScript',
+        number: 1,
+        icon: 'av-timer',
+        questions: [
+          {
+            question: 'What is a closure?',
+            answer: 'The combination of a function and the lexical environment within which that function was declared.'
+          }
+        ]
+      }
+    ]
 }
-
-const data=[{key: 'a'}, {key: 'b'}]
-
-
+  
 
 export function fetchDecks() {
     return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY).then(results => {
@@ -28,3 +54,18 @@ export function getDeck(title) {
     return fetchDesk()
         .then(desks => desks[title])
 }
+
+
+export function getDecks() {
+    return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY)
+      .then(res => JSON.parse(res));
+  }
+
+export function addCardToDeckHelper(title, card) {
+    return getDecks()
+    .then( decks => {
+        let simpleDeck = decks.decks.find(b => b.title === title);
+        simpleDeck.questions.push(card);
+        AsyncStorage.mergeItem(FLASHCARD_STORAGE_KEY, JSON.stringify(decks));
+    });
+  }

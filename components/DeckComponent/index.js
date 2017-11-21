@@ -12,6 +12,8 @@ class DeckComponent extends Component {
 
     render () {
 
+      console.log(this.props.state)
+
         return (
             <Card title={this.props.state.decks.deck.title} >
             <Text style={{marginBottom: 10, textAlign: 'center'}}>
@@ -33,7 +35,7 @@ class DeckComponent extends Component {
             <Divider style={{ backgroundColor: '#ccc' }} />
             <Button
               buttonStyle={{marginBottom: 10}}
-              icon={{name: 'question-circle'}}
+              icon={{name: 'add-circle'}}
               title='Start Quiz'
               onPress={() => {
                   this.props.navigation.navigate(

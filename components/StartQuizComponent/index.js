@@ -9,6 +9,7 @@ class StartQuizComponent extends Component {
         super(props)
         this.state={
             question: [],
+            totalQuestions: 0,
             questionNumber:1,
             TotalCorrect: 0,
             totalInvalid: 0,
@@ -17,8 +18,14 @@ class StartQuizComponent extends Component {
     }
 
     componentDidMount() {
+      
+
         let deck = this.props.state.decks.decks.find(b => b.deck_id == this.props.navigation.state.params)
-        
+
+        this.setState(state => ({
+            totalQuestions: deck.questions.length
+        }))
+
         if (this.state.questionNumber === 1) {
             
             this.setState(state => ({
@@ -55,13 +62,16 @@ class StartQuizComponent extends Component {
             <View>
                 <Card title="">
                     <Text style={{marginBottom: 10, textAlign: 'center', fontWeight: 'bold'}}>
-                        {this.state.question.question}
+                        {this.state.question.question} 
+                    </Text>
+                    <Text style={{marginBottom: 10, textAlign: 'right', fontWeight: 'bold'}}>
+                        {this.state.questionNumber} of {this.state.totalQuestions} 
                     </Text>
                     { this.state.showAnswer && 
                         <View>
-                             <Text style={{marginBottom: 10, textAlign: 'center', fontColor: 'green'}}>
-                            {this.state.question.answer}
-                    </Text>
+                            <Text style={{marginBottom: 10, textAlign: 'center', fontColor: 'green'}}>
+                                {this.state.question.answer}
+                            </Text>
                         </View>
                     }
                     { this.state.showAnswer && 

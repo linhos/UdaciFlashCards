@@ -25,7 +25,7 @@ class DeckComponent extends Component {
               title='Add Card to Deck'
               onPress={() => {
                   this.props.navigation.navigate(
-                    'addQuestionToDeck',
+                    'AddQuestionToDeck',
                   );
                 }
               }
@@ -37,7 +37,7 @@ class DeckComponent extends Component {
               title='Start Quiz'
               onPress={() => {
                   this.props.navigation.navigate(
-                    'startQuiz',
+                    'StartQuiz',
                   );
                 }
               }

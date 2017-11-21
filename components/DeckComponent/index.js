@@ -12,8 +12,6 @@ class DeckComponent extends Component {
 
     render () {
 
-      console.log(this.props.state)
-
         return (
             <Card title={this.props.state.decks.deck.title} >
             <Text style={{marginBottom: 10, textAlign: 'center'}}>

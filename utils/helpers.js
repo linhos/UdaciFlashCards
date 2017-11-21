@@ -60,12 +60,14 @@ export function getDecks() {
     return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY)
       .then(res => JSON.parse(res));
   }
+  
 
 export function addCardToDeckHelper(title, card) {
     return getDecks()
-    .then( decks => {
-        let simpleDeck = decks.decks.find(b => b.title === title);
-        simpleDeck.questions.push(card);
-        AsyncStorage.mergeItem(FLASHCARD_STORAGE_KEY, JSON.stringify(decks));
-    });
+        .then( decks => {
+            let simpleDeck = decks.decks.find(b => b.title === title);
+            simpleDeck.questions.push(card);
+            console.log(simpleDeck)
+            AsyncStorage.mergeItem(FLASHCARD_STORAGE_KEY, JSON.stringify(simpleDeck));
+        });
   }

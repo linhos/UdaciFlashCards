@@ -10,6 +10,7 @@ import AddQuestionToDeckComponent from './components/AddQuestionToDeckComponent'
 import StartQuizComponent from './components/StartQuizComponent'
 import NewDeckComponent from './components/NewDeckComponent'
 
+import {setLocalNotification} from './utils/helpers'
 
 import {StackNavigator} from 'react-navigation';
 
@@ -66,6 +67,11 @@ const FlashCardNavigation = StackNavigator({
 })
 
 export default class App extends React.Component {
+
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={store}>

@@ -5,7 +5,6 @@ import {SectionList, FlatList, ListView, TouchableHighlight, TouchableOpacity} f
 import {fetchDecksAction} from '../../actions'
 import {Text, View, StyleSheet} from 'react-native'
 import {fetchDecks, setInitialData, getDecks} from '../../utils/helpers'
-import ListItemComponent from '../ListItemComponent'
 import FlashCardNavigation from '../NavigationComponent'
 import {Card, Button} from 'react-native-elements'
 import { List, ListItem } from 'react-native-elements'
@@ -14,44 +13,6 @@ import { List, ListItem } from 'react-native-elements'
 
 class BaseComponent extends Component
 {
-    componentDidMount() {
-    }
-
-    _renderItem = ({item}) => {
-
-        return (
-            <View>
-                <TouchableOpacity
-                onPress={() => this.props.navigation.navigate('DetailDeck', item)}
-                    underlayColor='#eeeeee'>
-                    
-                            <Text>
-                                {item.title}
-                            </Text>
-                            <Text>Questions: {Object.keys(item.questions).length}</Text>    
-                    
-                </TouchableOpacity>
-            </View>
-        )
-    }
-
-    _keyExtractor = (item, index)  => {
-        return index
-    }
-
-    _renderSeparator = () => {
-        return (
-            <View
-                style={{
-                    flex: 1,
-                    height: 1,
-                    borderTopWidth: 1,
-                    backgroundColor: '#fff'
-                }}
-            />
-        )
-    }
-
 
     render() {
         console.log(this.props.state.decks)

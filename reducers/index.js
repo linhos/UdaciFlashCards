@@ -45,13 +45,11 @@ function decksReducer (state=initialState, action) {
 
     switch (action.type) {
         case 'DECK_LIST':
-            console.log("DECK LIST REDUCER")
             return {
                 ...state,
                 ...action.decks
             }
         case 'DECK_ITEM':
-          console.log("DECK ITEM REDUCER")
           return Object.assign({}, state, {
             'deck': action.deck,
             
@@ -64,10 +62,7 @@ function decksReducer (state=initialState, action) {
           return deckState
         
           case 'CREATE_DECK':
-            console.log('CREATE DECK REDUCER')
             let newDeck = Object.assign({}, state);
-
-            console.log(newDeck)
             newDeck.decks.push(action.deck)
             return newDeck
             

@@ -17,10 +17,6 @@ import {StackNavigator} from 'react-navigation';
 const store = configureStore();
 
 
-const Home = ({navigation}) => (
-      <BaseComponent navigation={navigation} />
-)
-
 const DetailDeck = ({navigation}) => (
   <DeckComponent navigation={navigation} />
 )
@@ -40,7 +36,7 @@ const NewDeck = ({navigation}) => (
 
 const FlashCardNavigation = StackNavigator({
   Home: {
-      screen: Home,
+      screen: BaseComponent,
       navigationOptions: {
         title: 'Home'
       }

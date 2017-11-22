@@ -5,19 +5,17 @@ import {Card, Button} from 'react-native-elements'
 
 class StartQuizComponent extends Component {
 
-    constructor(props){
-        super(props)
-        this.state={
-            deck: [],
-            question: [],
-            totalQuestions: 0,
-            questionNumber:1,
-            questionIndex: 0,
-            TotalCorrect: 0,
-            totalInvalid: 0,
-            showAnswer: false,
-            complete: false
-        }
+
+    state={
+        deck: [],
+        question: [],
+        totalQuestions: 0,
+        questionNumber:1,
+        questionIndex: 0,
+        TotalCorrect: 0,
+        totalInvalid: 0,
+        showAnswer: false,
+        complete: false
     }
 
     componentDidMount() {

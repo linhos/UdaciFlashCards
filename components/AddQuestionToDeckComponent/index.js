@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PureComponent} from 'react'
 import {connect} from 'react-redux'
 import {View, Text, TextInput} from 'react-native'
 import { Button } from 'react-native-elements'
@@ -6,7 +6,7 @@ import {addCardToDeckHelper} from '../../utils/helpers'
 import {addCardAction} from '../../actions'
 
 
-class AddQuestionToDeckComponent extends Component {
+class AddQuestionToDeckComponent extends PureComponent {
 
     state = {
         question: '',

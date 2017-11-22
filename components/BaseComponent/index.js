@@ -1,13 +1,7 @@
-
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {SectionList, FlatList, ListView, TouchableHighlight, TouchableOpacity} from 'react-native'
-import {fetchDecksAction} from '../../actions'
-import {Text, View, StyleSheet} from 'react-native'
-import {fetchDecks, setInitialData, getDecks} from '../../utils/helpers'
-import FlashCardNavigation from '../NavigationComponent'
-import {Card, Button} from 'react-native-elements'
-import { List, ListItem } from 'react-native-elements'
+import {View} from 'react-native'
+import { List, ListItem, Card, Button } from 'react-native-elements'
 
 
 

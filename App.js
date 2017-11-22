@@ -62,6 +62,12 @@ const FlashCardNavigation = StackNavigator({
     navigationOptions: {
       title: 'Start Quiz'
     }
+  },
+  NewDeck: {
+    screen: NewDeck,
+    navigationOptions: {
+      title: 'New Deck'
+    }
   }
   
 })

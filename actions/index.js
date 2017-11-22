@@ -26,3 +26,10 @@ export function addCardAction(title, card) {
         card
     }
 }
+
+export function createDeckAction(deck) {
+    return {
+        type: types.CREATE_DECK,
+        deck
+    }
+}

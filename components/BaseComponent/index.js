@@ -54,7 +54,7 @@ class BaseComponent extends Component
 
 
     render() {
-
+        console.log(this.props.state.decks)
         return (
             <View>
                 <List>

@@ -63,6 +63,14 @@ function decksReducer (state=initialState, action) {
           deckItem.questions.push(action.card)
           return deckState
         
+          case 'CREATE_DECK':
+            console.log('CREATE DECK REDUCER')
+            let newDeck = Object.assign({}, state);
+
+            console.log(newDeck)
+            newDeck.decks.push(action.deck)
+            return newDeck
+            
         default:
             return state;
     }

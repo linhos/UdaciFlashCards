@@ -50,12 +50,14 @@ class StartQuizComponent extends Component {
         this.setState({
             TotalCorrect: this.state.TotalCorrect + 1
         })
+        this.nextQuestion()
     }
 
     isInvalid = () => {
         this.setState({
             totalInvalid: this.state.totalInvalid + 1
         })
+        this.nextQuestion()
     }
 
     nextQuestion = () => {
@@ -118,14 +120,7 @@ class StartQuizComponent extends Component {
                                 title='show the answer' />
                         </View>
                     }
-                        <View>
-                            <Button
-                                buttonStyle={{marginTop: 10, marginBottom: 10}}
-                                onPress={this.nextQuestion}
-                                large
-                                icon={{name: 'envira', type: 'font-awesome'}}
-                                title='Next question' />
-                        </View>
+                        
                 </Card>
             </View>
             )

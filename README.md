@@ -15,3 +15,6 @@ yarn start - to start the project
 
 Install expo in your mobile phone and scan the qr code to get the project in the phone
 
+
+## Tested in Android with Expo
+

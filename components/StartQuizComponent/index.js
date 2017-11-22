@@ -133,9 +133,18 @@ class StartQuizComponent extends Component {
         return (
             <View>
                 <Card title="">
-                    <Text style={{marginBottom: 10, textAlign: 'center', fontWeight: 'bold'}}>
-                        Good Job: {this.state.TotalCorrect} answers correctly !!
-                    </Text>
+                    
+                        {this.state.TotalCorrect !== 0 &&
+                            <Text style={{marginBottom: 10, textAlign: 'center', fontWeight: 'bold'}}>
+                            Good Job: {this.state.TotalCorrect} answers correctly !!
+                            </Text>
+                        }
+                        {this.state.TotalCorrect === 0 &&
+                            <Text style={{marginBottom: 10, textAlign: 'center', fontWeight: 'bold'}}>
+                           Ups: {this.state.TotalCorrect} review the flashCard !!
+                            </Text>
+                        }
+                    
                     <View>
                     <Button
                         buttonStyle={{marginBottom: 10, backgroundColor: 'green'}}

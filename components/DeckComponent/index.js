@@ -37,7 +37,7 @@ class DeckComponent extends Component {
               title='Start Quiz'
               onPress={() => {
                   this.props.navigation.navigate(
-                    'StartQuiz', this.props.state.decks.deck.deck_id
+                    'StartQuiz', this.props.state.decks.deck.title
                   );
                 }
               }

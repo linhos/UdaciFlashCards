@@ -21,7 +21,9 @@ class StartQuizComponent extends Component {
     componentDidMount() {
       
 
-        deck = this.props.state.decks.decks.find(b => b.deck_id == this.props.navigation.state.params)
+        let deck = this.props.state.decks.decks.find(b => b.title == this.props.navigation.state.params)
+
+        console.log(deck)
 
         this.setState(state => ({
             totalQuestions: deck.questions.length,

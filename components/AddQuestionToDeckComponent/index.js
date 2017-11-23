@@ -4,6 +4,7 @@ import {View, Text, TextInput} from 'react-native'
 import { Button } from 'react-native-elements'
 import {addCardToDeckHelper} from '../../utils/helpers'
 import {addCardAction} from '../../actions'
+import { FormLabel, FormInput } from 'react-native-elements'
 
 
 class AddQuestionToDeckComponent extends PureComponent {
@@ -22,12 +23,8 @@ class AddQuestionToDeckComponent extends PureComponent {
             answer
         }
 
-        addCardToDeckHelper(this.props.navigation.state.params, card)
-
         this.props.dispatch(addCardAction(this.props.navigation.state.params, card))
-
         this.props.navigation.goBack();
-
     }
 
 

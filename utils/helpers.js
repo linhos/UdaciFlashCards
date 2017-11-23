@@ -80,11 +80,10 @@ export function getDecks() {
   
 
 export function addCardToDeckHelper(title, card) {
-    return getDecks()
+    return fetchDecks()
         .then( decks => {
             let simpleDeck = decks.decks.find(b => b.title === title);
             simpleDeck.questions.push(card);
-            console.log(simpleDeck)
             AsyncStorage.mergeItem(FLASHCARD_STORAGE_KEY, JSON.stringify(simpleDeck));
         });
   }

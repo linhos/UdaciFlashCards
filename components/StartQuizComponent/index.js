@@ -129,7 +129,7 @@ class StartQuizComponent extends Component {
                     
                         {this.state.TotalCorrect !== 0 &&
                             <Text style={{marginBottom: 10, textAlign: 'center', fontWeight: 'bold'}}>
-                            Good Job: {this.state.TotalCorrect} answers correctly !!
+                            Good Job: {this.state.TotalCorrect} / {this.state.totalQuestions} answers correctly !!
                             </Text>
                         }
                         {this.state.TotalCorrect === 0 &&

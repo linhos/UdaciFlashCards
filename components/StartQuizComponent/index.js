@@ -22,9 +22,6 @@ class StartQuizComponent extends Component {
       
 
         let deck = this.props.state.decks.decks.find(b => b.title == this.props.navigation.state.params)
-
-        console.log(deck)
-
         this.setState(state => ({
             totalQuestions: deck.questions.length,
             deck: deck

@@ -16,7 +16,7 @@ class NewDeckComponent extends Component {
         const newDeck = {title: this.state.title, questions: [], icon: 'av-timer'};
         this.props.dispatch(createDeckAction(newDeck))
 
-        this.props.navigation.goBack();
+        this.props.navigation.navigate('DetailDeck', newDeck)
     }
 
 
